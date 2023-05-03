@@ -3,48 +3,45 @@ pipeline {
    stages {
       stage('Build') {
          steps {
-            // Build the code using Maven
-            echo "Maven Compleate
+            // Build the code
+            echo "Build Compleate"
          }
       }
       stage('Unit and Integration Tests') {
          steps {
-            // Run unit tests using JUnit
-            echo 'mvn test'
-            // Run integration tests using Selenium
-            echo 'selenium run'
+            // Run unit tests 
+            echo ' testing Integration '
          }
       }
       stage('Code Analysis') {
          steps {
-            // Analyze code using SonarQube
-            echo 'sonar-scanner'
+        
+            echo 'Analyzing code'
          }
       }
       stage('Security Scan') {
          steps {
-            // Scan code using OWASP ZAP
-            echo 'zap-cli quick-scan --spider --scan <target-url>'
+
+            echo 'Scanning Security'
          }
       }
       stage('Deploy to Staging') {
          steps {
-            // Deploy to staging using AWS CLI
-            echo 'aws s3 cp <jar-file> s3://<bucket-name>/<jar-file>'
-            echo 'aws ec2 run-instances --image-id <ami-id> --instance-type <instance-type> --count 1'
+            // Deploy
+            echo 'Deploy Compleate to staging'
+
          }
       }
       stage('Integration Tests on Staging') {
          steps {
-            // Run integration tests on staging using Selenium
-            echo 'selenium run --staging-url <staging-url>'
+
+            echo 'Tests on Staging compleate'
          }
       }
       stage('Deploy to Production') {
          steps {
-            // Deploy to production using AWS CLI
-            echo 'aws s3 cp <jar-file> s3://<bucket-name>/<jar-file>'
-            echo 'aws ec2 run-instances --image-id <ami-id> --instance-type <instance-type> --count 1'
+            // Deploy to production
+            echo 'Production Deployment Compleate'
          }
       }
    }
