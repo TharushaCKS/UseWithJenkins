@@ -47,13 +47,13 @@ pipeline {
    }
    post {
     success {
-        mailext to: "stcao@deakin.edu.au",
+        emailext to: "stcao@deakin.edu.au",
         subject: "Build Successfull Email",
         body: "Successfull Stages",
         attackLog:true
     }
     failure {
-        mailext to: "stcao@deakin.edu.au",
+        emailext to: "stcao@deakin.edu.au",
         subject: "Build Failed Email",
         body: "Failed Stages",
         attackLog:true
