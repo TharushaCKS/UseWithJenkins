@@ -24,17 +24,6 @@ pipeline {
 
             echo 'Scanning Security'
          }
-         post{
-            success{
-               emailext to:'tharushacao1@gmail.com',
-                  subject:"Successfull Security scan by SonarQube",
-                  body:"Scan is successfull , please check log"
-            }
-            failure{
-               emailext to:'tharushacao1@gmail.com',
-                  subject:"Failed Security scan by SonarQube",
-                  body:"Scan is Failed , please check log"
-            }
       }
       stage('Deploy to Staging') {
          steps {
@@ -48,18 +37,6 @@ pipeline {
 
             echo 'Tests on Staging compleate'
          }
-         post{
-            success{
-               emailext to:'tharushacao1@gmail.com',
-                  subject:"Successfull Tests scan by TestNG",
-                  body:"Test is successfull , please check log"
-            }
-            failure{
-               emailext to:'tharushacao1@gmail.com',
-                  subject:"Failed Tests scan by TestNG",
-                  body:"Test is Failed , please check log"
-            }
-       }
       }
       stage('Deploy to Production') {
          steps {
@@ -69,19 +46,18 @@ pipeline {
       }
    }
    post {
-    success{
-       emailext to: "tharushacao1@gmail.com",
-       subject: "All Passed",
-       body: "Please find the attached log file",
-       attachLog: true
-             }
-     failure{
-       emailext to: "tharushacao1@gmail.com",
-       subject: "Failed ",
-       body: "Please find the attached log file",
-       attachLog: true
-             }
+    success {
+        mailext to: "stcao@deakin.edu.au",
+        subject: "Build Successfull Email",
+        body: "Successfull Stages",
+        attackLog:true
+    }
+    failure {
+        mailext to: "stcao@deakin.edu.au",
+        subject: "Build Failed Email",
+        body: "Failed Stages",
+        attackLog:true
     }
 
-}
+   }
 }
