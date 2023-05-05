@@ -4,38 +4,54 @@ pipeline {
       stage('Build') {
          steps {
             // Build the code
-            echo "Build Compleate"
+            echo "Build Using Maven"
          }
       }
       stage('Unit and Integration Tests') {
          steps {
             // Run unit tests 
-            echo ' testing Integration '
+            echo ' testing Integration Using Mockito'
+         }
+         post{
+             success {
+               echo"Testing is Successfull"
+               emailext to:"tharushacao1@gmail.com",
+               subject: "Successfull Testing Using Mockito",
+               body:"Testing Log attached below",
+               attachLog:true
+             }
+             failure{
+               echo"Testing is Failed"
+               emailext to:"tharushacao1@gmail.com",
+               subject: "Failed Testing Using Mockito",
+               body:"Testing Log attached below",
+               attachLog:true
+             }
          }
       }
       stage('Code Analysis') {
          steps {
         
-            echo 'Analyzing code'
+            echo 'Analyzing code using FindBugs'
          }
       }
       stage('Security Scan') {
          steps {
 
-            echo 'Scanning Security'
+            echo 'Scanning Security Using OWASP ZAP'
          }
          post{
              success {
                echo"Security Scan Successfull"
                emailext to:"tharushacao1@gmail.com",
-               subject: "Successfull Security Scan",
+               subject: "Successfull Security Scan Using OWASP ZAP",
                body:"Scan Log attached below",
                attachLog:true
              }
              failure{
                echo"Security Scan Failed"
                emailext to:"tharushacao1@gmail.com",
-               subject: "Failed Security Scan",
+               subject: "Failed Security Scan Using OWASP ZAP",
                body:"Scan Log attached below",
                attachLog:true
              }
@@ -44,36 +60,37 @@ pipeline {
       stage('Deploy to Staging') {
          steps {
             // Deploy
-            echo 'Deploy Compleate to staging'
+            echo 'Deploy Compleate to staging using AWS CodeDeploy'
 
          }
       }
-      stage('Integration Tests on Staging') {
+      stage('Integration Tests on Staging using Selenium ') {
          steps {
 
             echo 'Tests on Staging compleate'
+         }
+         post{
+             success {
+               echo"Testing on Staging Enviroment is Successfull"
+               emailext to:"tharushacao1@gmail.com",
+               subject: "Successfull Testing Using using Selenium",
+               body:"Testing Log attached below",
+               attachLog:true
+             }
+             failure{
+               echo"Testing on Staging Enviroment is Failed"
+               emailext to:"tharushacao1@gmail.com",
+               subject: "Failed Testing Using using Selenium",
+               body:"Testing Log attached below",
+               attachLog:true
+             }
          }
       }
       stage('Deploy to Production') {
          steps {
             // Deploy to production
-            echo 'Production Deployment Compleate'
+            echo 'Deploying to Production Using AWS CodeDeploy'
          }
       }
-   }
-   post {
-    success {
-        emailext to: "stcao@deakin.edu.au",
-        subject: "Build Successfull Email",
-        body: "Successfull Stages",
-        attachLog:true
-    }
-    failure {
-        emailext to: "stcao@deakin.edu.au",
-        subject: "Build Failed Email",
-        body: "Failed Stages",
-        attachLog:true
-    }
-
    }
 }
