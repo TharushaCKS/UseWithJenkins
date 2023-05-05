@@ -27,9 +27,9 @@ pipeline {
          post{
             always{
                emailext{
-                  subject :"scan log"
-                  body "security scan log below"
-                  attachmentsPattern: '**/*html'
+                  subject :"scan log",
+                  body "security scan log below",
+                  attachmentsPattern: '**/*html',
                   to:"tharushacao1@gmail.com
                }
             }
@@ -59,13 +59,13 @@ pipeline {
     success{
        emailext to: "tharushacao1@gmail.com",
        subject: "All Passed",
-       body: "Please find the attached log file"
+       body: "Please find the attached log file",
        attachLog: true
              }
      failure{
        emailext to: "tharushacao1@gmail.com",
        subject: "Failed ",
-       body: "Please find the attached log file"
+       body: "Please find the attached log file",
        attachLog: true
              }
     }
