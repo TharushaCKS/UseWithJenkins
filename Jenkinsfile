@@ -47,15 +47,12 @@ pipeline {
    }
    post {
     success {
-        mail to: "stcao@deakin.edu.au",
-        subject: "Build Successfull Email",
-        body: "Successfull"
+      // Send an email notification with logs on successful build and deployment
+      emailext body: "The build and deployment process was successful. Please find attached the logs.", to: 'email@example.com', subject: 'Build and deployment successful', attachmentsPattern: '*.log'
     }
     failure {
-        mail to: "stcao@deakin.edu.au",
-        subject: "Build Failed Email",
-        body: "Failed"
+      // Send an email notification with logs on failed build and deployment
+      emailext body: "The build and deployment process failed. Please find attached the logs.", to: 'email@example.com', subject: 'Build and deployment failed', attachmentsPattern: '*.log'
     }
-
 }
 }
