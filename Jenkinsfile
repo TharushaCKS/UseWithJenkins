@@ -46,17 +46,20 @@ pipeline {
       }
    }
    post {
-    success {
-        mail to: "stcao@deakin.edu.au",
-        subject: "Build Successfull Email",
-        body: "Successfull"
+    success{
+       echo "Security Scan succesful"
+       emailext to: "jesvinsabu3@gmail.com",
+       subject: "Security Sacn Successfull",
+       body: "Please find the attached log file",
+       attachLog: true
+             }
+     failure{
+       echo "Security Scan Failed"
+       emailext to: "jesvinsabu3@gmail.com",
+       subject: "Security Scan Failed",
+        body: "Please find the attached log file",
+        attachLog: true
+             }
     }
-    failure {
-        mail to: "stcao@deakin.edu.au",
-        subject: "Build Failed Email",
-        body: "Failed"
-    }
-
-}
 
 }
