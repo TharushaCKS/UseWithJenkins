@@ -24,6 +24,16 @@ pipeline {
 
             echo 'Scanning Security'
          }
+         post{
+            always{
+               emailext{
+                  subject :"scan log"
+                  body "security scan log below"
+                  attachmentsPattern: '**/*html'
+                  to:"tharushacao1@gmail.com
+               }
+            }
+         }
       }
       stage('Deploy to Staging') {
          steps {
@@ -48,13 +58,15 @@ pipeline {
    post {
     success{
        emailext to: "tharushacao1@gmail.com",
-       subject: "Security Sacn Successfull",
+       subject: "All Passed",
        body: "Please find the attached log file"
+       attachLog: true
              }
      failure{
        emailext to: "tharushacao1@gmail.com",
-       subject: "Security Scan Failed",
+       subject: "Failed ",
        body: "Please find the attached log file"
+       attachLog: true
              }
     }
 
