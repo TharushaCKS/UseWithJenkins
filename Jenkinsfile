@@ -46,17 +46,18 @@ pipeline {
       }
    }
    post {
-      success {
-         emailext body: 'The build was successful!',
-             subject: 'Build Successful Email',
-             to: 'stcao@deakin.edu.au',
-             attachmentsPattern: '**/*.log'
-               }
-      failure {
-          emailext body: 'The build failed. Please check the logs for details.',
-             subject: 'Build Failed Email',
-             to: 'stcao@deakin.edu.au',
-             attachmentsPattern: '**/*.log'
-               }
-   }
+    success {
+        emailext attachLog: true,
+        subject: "Build Successful Email",
+        to: "stcao@deakin.edu.au",
+        body: "Successfull"
+    }
+    failure {
+        emailext attachLog: true,
+        subject: "Build Failed Email",
+        to: "stcao@deakin.edu.au",
+        body: "Failed"
+    }
+}
+
 }
