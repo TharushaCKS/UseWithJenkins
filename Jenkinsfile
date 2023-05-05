@@ -32,7 +32,7 @@ pipeline {
                body:"Scan Log attached below",
                attachLog:true
              }
-             faliure{
+             failure{
                echo"Security Scan Failed"
                emailext to:"tharushacao1@gmail.com",
                subject: "Failed Security Scan",
