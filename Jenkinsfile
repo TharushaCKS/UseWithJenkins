@@ -49,12 +49,12 @@ pipeline {
     success{
        emailext to: "tharushacao1@gmail.com",
        subject: "Security Sacn Successfull",
-       body: "Please find the attached log file",
+       body: "Please find the attached log file"
              }
      failure{
        emailext to: "tharushacao1@gmail.com",
        subject: "Security Scan Failed",
-       body: "Please find the attached log file",
+       body: "Please find the attached log file"
              }
     }
 
