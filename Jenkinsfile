@@ -50,13 +50,13 @@ pipeline {
         mail to: "stcao@deakin.edu.au",
         subject: "Build Successfull Email",
         body: "Successfull",
-        attachmentsPattern: '*.log'
+        attachLog = true
     }
     failure {
         mail to: "stcao@deakin.edu.au",
         subject: "Build Failed Email",
         body: "Failed",
-        attachmentsPattern: '*.log'
+        attachLog = true
     }
 }
 }
