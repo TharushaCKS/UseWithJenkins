@@ -48,11 +48,11 @@ pipeline {
    post {
     success {
       // Send an email notification with logs on successful build and deployment
-      emailext body: "The build and deployment process was successful. Please find attached the logs.", to: 'email@example.com', subject: 'Build and deployment successful', attachmentsPattern: '*.log'
+      emailext body: "The build and deployment process was successful. Please find attached the logs.", to: 'Tharushacao1@gmail.com', subject: 'Build and deployment successful', attachmentsPattern: '*.log'
     }
     failure {
       // Send an email notification with logs on failed build and deployment
-      emailext body: "The build and deployment process failed. Please find attached the logs.", to: 'email@example.com', subject: 'Build and deployment failed', attachmentsPattern: '*.log'
+      emailext body: "The build and deployment process failed. Please find attached the logs.", to: 'Tharushacao1@gmail.com', subject: 'Build and deployment failed', attachmentsPattern: '*.log'
     }
 }
 }
