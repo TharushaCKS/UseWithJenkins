@@ -50,11 +50,13 @@ pipeline {
         mail to: "stcao@deakin.edu.au",
         subject: "Build Successfull Email",
         body: "Successfull"
+        attachLog true
     }
     failure {
         mail to: "stcao@deakin.edu.au",
         subject: "Build Failed Email",
         body: "Failed"
+        attachLog true
     }
    }
 }
