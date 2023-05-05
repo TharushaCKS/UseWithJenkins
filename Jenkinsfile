@@ -73,7 +73,7 @@ pipeline {
              success {
                echo"Testing on Staging Enviroment is Successfull"
                emailext to:"tharushacao1@gmail.com",
-               subject: "Successfull Testing Using using Selenium",
+               subject: "Successfull Testing (Integration) using Selenium",
                body:"Testing Log attached below",
                attachLog:true
              }
