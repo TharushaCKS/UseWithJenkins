@@ -49,13 +49,13 @@ pipeline {
       success {
          emailext body: 'The build was successful!',
              subject: 'Build Successful Email',
-             to: 'tharushacao1@gmail.com',
+             to: 'stcao@deakin.edu.au',
              attachmentsPattern: '**/*.log'
                }
       failure {
           emailext body: 'The build failed. Please check the logs for details.',
              subject: 'Build Failed Email',
-             to: 'tharushacao1@gmail.com',
+             to: 'stcao@deakin.edu.au',
              attachmentsPattern: '**/*.log'
                }
    }
