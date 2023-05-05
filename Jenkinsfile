@@ -24,6 +24,22 @@ pipeline {
 
             echo 'Scanning Security'
          }
+         post{
+             success {
+               echo"Security Scan Successfull"
+               emailext to:"tharushacao1@gmail.com",
+               subject: "Successfull Security Scan",
+               body:"Scan Log attached below",
+               attachLog:true
+             }
+             faliure{
+               echo"Security Scan Failed"
+               emailext to:"tharushacao1@gmail.com",
+               subject: "Failed Security Scan",
+               body:"Scan Log attached below",
+               attachLog:true
+             }
+         }
       }
       stage('Deploy to Staging') {
          steps {
